@@ -1,23 +1,32 @@
 package application;
 
-import javafx.application.Application;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
-import javafx.stage.Stage;
+import application.config.GenericDAO;
+import application.entities.Service;
+import application.services.EntityService;
 
-public class Main extends Application {
+import java.util.List;
 
-    @Override
-    public void start(Stage primaryStage) throws Exception{
-        Parent root = FXMLLoader.load(getClass().getResource("/application/view/main.fxml"));
-        primaryStage.setTitle("Services");
-        primaryStage.setScene(new Scene(root, 800, 600));
-        primaryStage.show();
-    }
-
+public class Main {
 
     public static void main(String[] args) {
-        launch(args);
+
+        GenericDAO<Service> genericDAO = new GenericDAO<>();
+        EntityService entityService = new EntityService(genericDAO);
+
+        /* Count */
+        System.out.println(String.format("\n-- COUNT: %s -- ", entityService.count()));
+
+        /* Group by */
+        System.out.println("\n-- GROUP BY: --");
+        List<Service> list = entityService.groupBy("port");
+        list.stream().forEach(service -> System.out.println("Port: " + service.getPort()));
+
+        /* Having */
+        System.out.println("\n-- HAVING: --");
+        list = entityService.having(100, "port");
+        list.stream().forEach(service -> System.out.println("Port: " + service.getPort()));
+
+        /* TODO NEXT */
+
     }
 }

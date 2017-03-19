@@ -1,4 +1,4 @@
-package application.model;
+package application.entities;
 
 
 import javax.persistence.*;
@@ -22,14 +22,29 @@ public class Service {
     private String host;
 
     @Column(name = "port", unique = true)
-    private String port;
+    private Integer port;
 
     public Service() {
 
     }
 
-    public Service(String host, String port) {
+    public Service(String host, Integer port) {
         this.host = host;
+        this.port = port;
+    }
+
+    /**
+     * For GROUP BY one column
+     */
+    public Service(Integer port) {
+        this.port = port;
+    }
+
+    /**
+     * Another hack
+     */
+    public Service(Integer port, Integer id) {
+        this.id = id;
         this.port = port;
     }
 
@@ -47,10 +62,10 @@ public class Service {
         this.host = host;
     }
 
-    public String getPort() {
+    public Integer getPort() {
         return port;
     }
-    public void setPort(String port) {
+    public void setPort(Integer port) {
         this.port = port;
     }
 }
