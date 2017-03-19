@@ -1,8 +1,3 @@
 /*C3*/SET SCHEMA PUBLIC
-alter table services drop constraint UK1y3fyfdrmyhq5hl5v53x6nnx6
-alter table services add constraint UK1y3fyfdrmyhq5hl5v53x6nnx6 unique (host, port)
-DELETE FROM SERVICES WHERE ID=10
-COMMIT
-INSERT INTO SERVICES VALUES(11,'localhost','80')
-ALTER SEQUENCE PUBLIC.HIBERNATE_SEQUENCE RESTART WITH 12
-COMMIT
+\u000a    alter table services \u000a       drop constraint UK1y3fyfdrmyhq5hl5v53x6nnx6
+\u000a    alter table services \u000a       add constraint UK1y3fyfdrmyhq5hl5v53x6nnx6 unique (host, port)
