@@ -19,6 +19,7 @@ public class HibernateUtil {
             try {
                 sessionFactory = new MetadataSources(serviceRegistry).buildMetadata().buildSessionFactory();
             } catch (Exception e) {
+                System.out.println(e.getMessage());
                 StandardServiceRegistryBuilder.destroy(serviceRegistry);
             }
         }

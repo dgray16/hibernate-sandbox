@@ -7,18 +7,26 @@
 
         <property name="hibernate.connection.driver_class">org.hsqldb.jdbc.JDBCDriver</property>
 
-        <property name="hibernate.connection.url">jdbc:hsqldb:file:monitoring</property>
+        <property name="hibernate.connection.url">jdbc:hsqldb:file:service-monitoring/monitoring</property>
+
+        <!--
+        <property name="hibernate.connection.username">SUPERUSER</property>
+        <property name="hibernate.connection.password">superuser</property>
+        -->
+
         <property name="hibernate.connection.username">root</property>
         <property name="hibernate.connection.password">root</property>
+
 
         <property name="hibernate.hbm2ddl.auto">update</property>
         <property name="show_sql">true</property>
         <property name="format_sql">true</property>
-        <property name="use_sql_comments">true</property>
 
         <property name="hibernate.current_session_context_class">thread</property>
 
         <mapping class="application.entities.Service"/>
+        <mapping class="application.entities.Availability"/>
+        <mapping class="application.entities.Backup"/>
 
     </session-factory>
 </hibernate-configuration>

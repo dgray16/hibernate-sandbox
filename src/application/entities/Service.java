@@ -16,7 +16,7 @@ public class Service {
     @Id
     @GeneratedValue
     @Column(name = "id")
-    private int id;
+    private Integer id;
 
     @Column(name = "host", unique = true)
     private String host;
